@@ -1,58 +1,200 @@
-.footer{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 50px;
-}
-.footer-logo{
-display: flex;
-align-items: center;
-gap: 20px;
-}
-.footer-logo p{
-color: #383838;
-font-size: 46px;
-font-weight: 700;
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background: var(--color-bg);        /* page bg tint */
+  padding-top: 60px;
 }
 
-.footer-links{
-display: flex;
-list-style: none;
-gap: 50px;
-color: #252525;
-font-size: 20px;
-}
-.footer-links li{
-cursor: pointer;
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.footer-social-icon{
-display: flex;
-gap: 20px;
-}
-.footer-icons-container{
-padding: 10px;
-padding-bottom: 6px;
-background:#fbfbfb;
-border: 1px solid #ebebeb;
+.footer-logo img {
+  width: 60px;
 }
 
-.footer-copyright{
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 30px;
-width: 100%;
-margin-bottom: 30px;
-color: #1a1a1a;
-font-size: 20px;
+.footer-logo p {
+  color: var(--color-primary);        /* #383838 → #0D3B2E */
+  font-size: 46px;
+  font-weight: 700;
 }
 
-.footer-copyright hr{
-width: 80%;
-border: none;
-border-radius: 10px;
-height: 3px;
-background: #c7c7c7;
+.footer-links {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+  color: var(--color-text-muted);     /* #252525 → #5A8A78 */
+  font-size: 20px;
+}
+
+.footer-links li {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footer-links li:hover {
+  color: var(--color-accent);         /* teal on hover */
+}
+
+.footer-social-icon {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-icons-container {
+  padding: 10px;
+  padding-bottom: 6px;
+  background: var(--color-card);      /* #fbfbfb → white */
+  border: 1px solid var(--color-border); /* #ebebeb → #C8EDE0 */
+  border-radius: 8px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-icons-container:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.footer-icons-container img {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  margin-bottom: 30px;
+  color: var(--color-text-muted);     /* #1a1a1a → #5A8A78 */
+  font-size: 20px;
+}
+
+.footer-copyright hr {
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  height: 3px;
+  background: var(--color-accent);    /* #c7c7c7 → #00C896 */
+}
+
+/* ── Tablet ── */
+@media (max-width: 1280px) {
+  .footer {
+    gap: 40px;
+    padding-top: 50px;
+  }
+
+  .footer-logo img {
+    width: 50px;
+  }
+
+  .footer-logo p {
+    font-size: 36px;
+  }
+
+  .footer-links {
+    gap: 35px;
+    font-size: 18px;
+  }
+
+  .footer-copyright {
+    font-size: 18px;
+  }
+}
+
+/* ── Small Tablet ── */
+@media (max-width: 1024px) {
+  .footer {
+    gap: 30px;
+    padding-top: 40px;
+  }
+
+  .footer-logo p {
+    font-size: 28px;
+  }
+
+  .footer-links {
+    gap: 25px;
+    font-size: 16px;
+  }
+
+  .footer-icons-container img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .footer-copyright {
+    font-size: 16px;
+    gap: 20px;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .footer {
+    gap: 24px;
+    padding: 40px 20px 0;
+  }
+
+  .footer-logo img {
+    width: 40px;
+  }
+
+  .footer-logo p {
+    font-size: 24px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px 24px;
+    font-size: 15px;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .footer-icons-container img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .footer-copyright {
+    font-size: 13px;
+    gap: 16px;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .footer-copyright hr {
+    width: 90%;
+    height: 2px;
+  }
+}
+
+/* ── Small Mobile ── */
+@media (max-width: 500px) {
+  .footer-logo p {
+    font-size: 20px;
+  }
+
+  .footer-links {
+    gap: 12px 20px;
+    font-size: 14px;
+  }
+
+  .footer-social-icon {
+    gap: 14px;
+  }
+
+  .footer-copyright {
+    font-size: 12px;
+  }
 }

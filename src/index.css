@@ -2,6 +2,16 @@
 
   margin: 0;
 }
+:root {
+  --color-primary:      #0D3B2E;
+  --color-accent:       #00C896;
+  --color-cta:          #FF7043;
+  --color-bg:           #F0FFF8;
+  --color-card:         #FFFFFF;
+  --color-text:         #0D3B2E;
+  --color-text-muted:   #5A8A78;
+  --color-border:       #C8EDE0;
+}
 
 body {
   margin: 0;
