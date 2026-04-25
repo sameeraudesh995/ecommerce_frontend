@@ -3,10 +3,16 @@ import './Breadcrum.css'
 import arrow_icon from '../Assets/breadcrum_arrow.png'
 
 const Breadcrum = (props) => {
-  const {product} = props;
+  const { product } = props;
   return (
-    <div className='breadcrum'>
-      HOME <img src={arrow_icon} alt="" /> SHOP <img src={arrow_icon} alt="" />{product.category} <img src={arrow_icon} alt="" />{product.className}
+    <div className="breadcrum">
+      <span>HOME</span>
+      <img src={arrow_icon} alt=">" />
+      <span>SHOP</span>
+      <img src={arrow_icon} alt=">" />
+      <span>{product.category}</span>
+      <img src={arrow_icon} alt=">" />
+      <span className="breadcrum-active">{product.name}</span>
     </div>
   )
 }

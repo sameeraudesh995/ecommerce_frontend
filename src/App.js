@@ -11,6 +11,7 @@ import Footer from './Components/Footer/Footer';
 import men_banner from './Components/Assets/banner_mens.png'
 import women_banner from './Components/Assets/banner_women.png'
 import kid_banner from './Components/Assets/banner_kids.png'
+import WhatsAppButton from './Components/WhatsApp/WhatsAppButton';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
            
       </Routes>
       <Footer/>
+
+      <WhatsAppButton/>
 
       </BrowserRouter>
 
