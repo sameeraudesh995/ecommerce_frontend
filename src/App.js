@@ -13,10 +13,12 @@ import women_banner from './Components/Assets/banner_women.png'
 import kid_banner from './Components/Assets/banner_kids.png'
 import WhatsAppButton from './Components/WhatsApp/WhatsAppButton';
 import { ToastProvider } from './Components/ToastContext/ToastContext';
+import ShopContextProvider from './Context/ShopContex';
 
 function App() {
   return (
-     <ToastProvider>
+     
+      
     <div className='App'>
      
       <BrowserRouter>
@@ -43,7 +45,7 @@ function App() {
       </BrowserRouter>
 
     </div>
-    </ToastProvider>
+   
   );
 }
 

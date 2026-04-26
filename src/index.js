@@ -4,16 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ShopContextProvider from './Context/ShopContex';
+import { ToastProvider } from './Components/ToastContext/ToastContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ToastProvider>
     <ShopContextProvider>
 
    
     <App />
  </ShopContextProvider>
-    
+    </ToastProvider>
   </React.StrictMode>
   
 );
