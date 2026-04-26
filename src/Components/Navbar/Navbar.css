@@ -86,8 +86,8 @@
     margin-left: -55px;
     border-radius: 11px;
     font-size: 14px;
-    background: var(--color-cta);      /* red → #FF7043 */
-    color: white;
+    background: var(--color-cta);      
+    color: var(--color-card);
 }
 
 .nav-dropdown {
