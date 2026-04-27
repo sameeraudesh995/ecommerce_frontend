@@ -9,7 +9,7 @@ const Popular = () => {
 const [popularProducts,setPopularProducts] = useState([]);
 
 useEffect(()=>{
-  fetch('http://localhost:4000/popularinwomen')
+  fetch('http://localhost:4000/popularingov')
   .then((response)=>response.json())
   .then((data)=>setPopularProducts(data));
 },[])
@@ -19,7 +19,7 @@ useEffect(()=>{
   return (
     <div className='popular'>
 
-        <h1>POPULAR IN WOMEN</h1>
+        <h1>POPULAR IN GOVERNMENT CAMPUS</h1>
         <hr/>
 
       <div className="popular-item">
