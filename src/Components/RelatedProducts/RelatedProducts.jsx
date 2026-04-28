@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './RelatedProducts.css'
-import data_product from '../Assets/data'
+//import data_product from '../Assets/data'
 import Item from '../Item/item'
 
 const RelatedProducts = () => {
+
+const [relatedProduct, setRelatedProduct] =useState([]);
+
+useEffect(()=>{
+  fetch('http://localhost:4000/newcollections')
+  .then((response)=>response.json())
+  .then((data)=>setRelatedProduct(data));
+},[])
+
   return (
     <div className="relatedproducts">
 
@@ -11,7 +20,7 @@ const RelatedProducts = () => {
       <hr />
 
       <div className="relatedproducts-item">
-        {data_product.map((item, i) => (
+        {relatedProduct.map((item, i) => (
           <Item
             key={i}
             id={item.id}
