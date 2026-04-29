@@ -14,6 +14,7 @@ import kid_banner from './Components/Assets/banner_kids.png'
 import WhatsAppButton from './Components/WhatsApp/WhatsAppButton';
 import { ToastProvider } from './Components/ToastContext/ToastContext';
 import ShopContextProvider from './Context/ShopContex';
+import Checkout from './Pages/checkout/Checkout';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         
            </Route>
            <Route path='/cart' element={<Cart/>}/>
+           <Route path='/checkout' element={<Checkout/>}/>
            <Route path='/login' element={<LoginSignup/>}/>
 
            
