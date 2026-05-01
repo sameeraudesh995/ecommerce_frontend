@@ -1,9 +1,18 @@
-.hero {
+/* .hero {
     height: 100vh;
     background: linear-gradient(135deg, #d4f7ec 0%, #f0fff8 60%);
     display: flex;
 }
 
+.hero img{
+    width: 100vw;
+    height: 100%;
+    filter: drop-shadow(0 20px 40px rgba(12, 12, 12, 0.2));
+    transition: transform 0.3s ease;
+    
+    
+
+}
 .hero-left {
     flex: 1;
     display: flex;
@@ -15,13 +24,13 @@
 }
 
 .hero-left h2 {
-    color: var(--color-text-muted);   /* #090909 → #5A8A78 */
+    color: var(--color-text-muted);   
     font-size: 26px;
     font-weight: 600;
 }
 
 .hero-left p {
-    color: var(--color-primary);      /* #171717 → #0D3B2E */
+    color: var(--color-primary);      
     font-size: 100px;
     font-weight: 700;
 }
@@ -45,7 +54,7 @@
     height: 70px;
     border-radius: 75px;
     margin-top: 30px;
-    background: var(--color-cta);     /* #ff4141 → #FF7043 */
+    background: var(--color-cta);    
     color: white;
     font-size: 22px;
     font-weight: 500;
@@ -73,7 +82,7 @@
 }
 
 .hero-right img {
-    width: 500px;
+    width: 750px;
     filter: drop-shadow(0 20px 40px rgba(0, 200, 150, 0.2));
     transition: transform 0.3s ease;
 }
@@ -175,4 +184,69 @@
         height: 45px;
         font-size: 14px;
     }
+} */
+
+.hero {
+  width: 100%;
+  height: auto;                        /* ✅ auto height — never clips image */
+  overflow: hidden;
+  display: block;
+  background: linear-gradient(135deg, #d4f7ec 0%, #f0fff8 60%);
+  line-height: 0;                      /* ✅ removes phantom bottom gap under img */
+}
+
+.hero img {
+    margin-top: -100px;
+  width: 100%;                         /* ✅ always full width */
+  height: auto;                        /* ✅ auto height keeps full image visible */
+  display: block;                      /* ✅ removes inline gap */
+  object-fit: contain;                 /* ✅ shows entire image, nothing clipped */
+  max-width: 100%;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1280px) {
+  .hero img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ── Small Tablet ── */
+@media (max-width: 1024px) {
+  .hero img {
+    margin-top: -25px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .hero {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero img {
+    margin-top: -35px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+/* ── Small Mobile ── */
+@media (max-width: 500px) {
+  .hero {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero img {
+    margin-top: -25px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }

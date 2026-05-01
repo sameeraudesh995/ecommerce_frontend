@@ -15,6 +15,7 @@ import WhatsAppButton from './Components/WhatsApp/WhatsAppButton';
 import { ToastProvider } from './Components/ToastContext/ToastContext';
 import ShopContextProvider from './Context/ShopContex';
 import Checkout from './Pages/checkout/Checkout';
+import MyOrders from './Pages/MyOrders/MyOrders';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
            </Route>
            <Route path='/cart' element={<Cart/>}/>
            <Route path='/checkout' element={<Checkout/>}/>
+          <Route path="/myorders" element={<MyOrders/>} />
            <Route path='/login' element={<LoginSignup/>}/>
 
            
