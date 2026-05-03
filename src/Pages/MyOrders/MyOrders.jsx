@@ -2,26 +2,26 @@ import React, { useEffect, useState } from 'react'
 import './MyOrders.css'
 
 const STATUS_CONFIG = {
-  pending:   { bg: '#fff8e1', color: '#f39c12', border: '#fce08a', icon: '🕐', label: 'Pending' },
+  pending: { bg: '#fff8e1', color: '#f39c12', border: '#fce08a', icon: '🕐', label: 'Pending' },
   confirmed: { bg: '#e3f2fd', color: '#1565c0', border: '#90caf9', icon: '✅', label: 'Confirmed' },
-  shipped:   { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7', icon: '🚚', label: 'Shipped' },
+  shipped: { bg: '#e8f5e9', color: '#2e7d32', border: '#a5d6a7', icon: '🚚', label: 'Shipped' },
   delivered: { bg: '#e0f7ee', color: '#00796b', border: '#80cbc4', icon: '📦', label: 'Delivered' },
-  cancelled: { bg: '#fdecea', color: '#c0392b', border: '#f5c6c6', icon: '✕',  label: 'Cancelled' },
+  cancelled: { bg: '#fdecea', color: '#c0392b', border: '#f5c6c6', icon: '✕', label: 'Cancelled' },
 }
 
 const MyOrders = () => {
-  const [orders,   setOrders]   = useState([])
-  const [loading,  setLoading]  = useState(true)
+  const [orders, setOrders] = useState([])
+  const [loading, setLoading] = useState(true)
   const [expanded, setExpanded] = useState(null)
-  const [filter,   setFilter]   = useState('all')
+  const [filter, setFilter] = useState('all')
 
   const fetchOrders = async () => {
     setLoading(true)
     try {
-      const res  = await fetch('http://localhost:4000/myorders', {
-        method:  'GET',
+      const res = await fetch('http://localhost:4000/myorders', {
+        method: 'GET',
         headers: {
-          'auth-token':   localStorage.getItem('auth-token'),
+          'auth-token': localStorage.getItem('auth-token'),
           'Content-Type': 'application/json',
         },
       })
@@ -37,11 +37,11 @@ const MyOrders = () => {
   const cancelOrder = async (orderId) => {
     if (!window.confirm('Are you sure you want to cancel this order?')) return
     try {
-      const res  = await fetch('http://localhost:4000/cancelorder', {
-        method:  'POST',
+      const res = await fetch('http://localhost:4000/cancelorder', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'auth-token':   localStorage.getItem('auth-token'),
+          'auth-token': localStorage.getItem('auth-token'),
         },
         body: JSON.stringify({ orderId }),
       })
@@ -65,10 +65,10 @@ const MyOrders = () => {
     : orders.filter(o => o.status === filter)
 
   const counts = {
-    all:       orders.length,
-    pending:   orders.filter(o => o.status === 'pending').length,
+    all: orders.length,
+    pending: orders.filter(o => o.status === 'pending').length,
     confirmed: orders.filter(o => o.status === 'confirmed').length,
-    shipped:   orders.filter(o => o.status === 'shipped').length,
+    shipped: orders.filter(o => o.status === 'shipped').length,
     delivered: orders.filter(o => o.status === 'delivered').length,
     cancelled: orders.filter(o => o.status === 'cancelled').length,
   }
@@ -131,7 +131,7 @@ const MyOrders = () => {
       ) : (
         <div className="myorders-list">
           {filtered.map((order) => {
-            const cfg    = STATUS_CONFIG[order.status] || STATUS_CONFIG.pending
+            const cfg = STATUS_CONFIG[order.status] || STATUS_CONFIG.pending
             const isOpen = expanded === order._id
 
             return (
@@ -192,10 +192,10 @@ const MyOrders = () => {
                 {order.status !== 'cancelled' && (
                   <div className="myorder-progress">
                     {['pending', 'confirmed', 'shipped', 'delivered'].map((s, i) => {
-                      const steps    = ['pending', 'confirmed', 'shipped', 'delivered']
+                      const steps = ['pending', 'confirmed', 'shipped', 'delivered']
                       const curIndex = steps.indexOf(order.status)
-                      const isDone   = i <= curIndex
-                      const isCur    = i === curIndex
+                      const isDone = i <= curIndex
+                      const isCur = i === curIndex
                       return (
                         <React.Fragment key={s}>
                           <div className="progress-step">

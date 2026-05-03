@@ -9,8 +9,8 @@ import { useNavigate } from 'react-router-dom'
 const Checkout = () => {
   const { getTotalCartAmount, cartItems, all_product } = useContext(ShopContext)
 
-    const navigate = useNavigate()
-  
+  const navigate = useNavigate()
+
   const { showToast } = useToast();
 
   const [form, setForm] = useState({
@@ -41,51 +41,51 @@ const Checkout = () => {
   //placeorder function create
 
   const placeOrder = async () => {
-  if (!localStorage.getItem('auth-token')) {
-    showToast('warning', 'Not Logged In', 'Please log in to place an order.');
-    return;
-  }
-
-  // build items array from cart
-  const orderItems = all_product
-    .filter(p => cartItems[p.id] > 0)
-    .map(p => ({
-      id:        p.id,
-      name:      p.name,
-      image:     p.image,
-      price:     p.new_price,
-      quantity:  cartItems[p.id],
-    }));
-
-  const orderData = {
-    items:       orderItems,
-    delivery:    form,
-    totalAmount: total,
-  };
-
-  try {
-    const response = await fetch('http://localhost:4000/placeorder', {
-      method: 'POST',
-      headers: {
-        Accept:           'application/json',
-        'Content-Type':   'application/json',
-        'auth-token':     localStorage.getItem('auth-token'),
-      },
-      body: JSON.stringify(orderData),
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      showToast('success', 'Order Placed!', 'Your order has been placed successfully.');
-      navigate('/');                   // redirect to home after order
-    } else {
-      showToast('error', 'Failed!', data.error || 'Could not place order.');
+    if (!localStorage.getItem('auth-token')) {
+      showToast('warning', 'Not Logged In', 'Please log in to place an order.');
+      return;
     }
-  } catch (error) {
-    showToast('error', 'Server Error', 'Could not connect. Please try again.');
-  }
-};
+
+    // build items array from cart
+    const orderItems = all_product
+      .filter(p => cartItems[p.id] > 0)
+      .map(p => ({
+        id: p.id,
+        name: p.name,
+        image: p.image,
+        price: p.new_price,
+        quantity: cartItems[p.id],
+      }));
+
+    const orderData = {
+      items: orderItems,
+      delivery: form,
+      totalAmount: total,
+    };
+
+    try {
+      const response = await fetch('http://localhost:4000/placeorder', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': localStorage.getItem('auth-token'),
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        showToast('success', 'Order Placed!', 'Your order has been placed successfully.');
+        navigate('/');                   // redirect to home after order
+      } else {
+        showToast('error', 'Failed!', data.error || 'Could not place order.');
+      }
+    } catch (error) {
+      showToast('error', 'Server Error', 'Could not connect. Please try again.');
+    }
+  };
 
   return (
     <div className="checkout">
@@ -318,7 +318,7 @@ const Checkout = () => {
                 <p className="confirm-value">
                   {form.paymentMethod === 'card' ? 'Credit / Debit Card'
                     : form.paymentMethod === 'cod' ? 'Cash on Delivery'
-                    : 'Bank Transfer'}
+                      : 'Bank Transfer'}
                 </p>
               </div>
 

@@ -5,8 +5,8 @@ import remove_icon from '../Assets/cart_cross_icon.png';
 import { Link } from 'react-router-dom';
 
 const CartItems = () => {
-    const {getTotalCartAmount, all_product, cartItems, removeFromCart} = useContext(ShopContext);
-    
+  const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
+
   return (
     <div className='cartitems'>
       <div className="cartitems-format-main">
@@ -18,62 +18,61 @@ const CartItems = () => {
         <p>Remove</p>
       </div>
 
-      <hr/>
+      <hr />
 
       {all_product.map((e) => {
-        if(cartItems[e.id] > 0) 
-        {
+        if (cartItems[e.id] > 0) {
           return <div>
-            
-              <div className="cartitems-format cartitems-format-main">
-                <img src={e.image} alt="" className='carticon-product-icon' />
-                <p>{e.name}</p>
-                <p>Lkr {e.new_price}</p>
-                <button className='cartitems-quantity'>{cartItems[e.id]}</button>
-                <p>Lkr {e.new_price * cartItems[e.id]}</p>
-                <img className='cartitems-remove-icon' src={remove_icon} onClick={() => {removeFromCart(e.id)}} alt="" />
-              </div>
-              <hr/>
+
+            <div className="cartitems-format cartitems-format-main">
+              <img src={e.image} alt="" className='carticon-product-icon' />
+              <p>{e.name}</p>
+              <p>Lkr {e.new_price}</p>
+              <button className='cartitems-quantity'>{cartItems[e.id]}</button>
+              <p>Lkr {e.new_price * cartItems[e.id]}</p>
+              <img className='cartitems-remove-icon' src={remove_icon} onClick={() => { removeFromCart(e.id) }} alt="" />
             </div>
-          
+            <hr />
+          </div>
+
         }
-        return null; 
+        return null;
       })}
 
-<div className="cartitems-down">
-       <div className="cartitems-total">
-      <h1>cart Totals</h1>
-    <div>
-        <div className="cartitems-total-item">
-          <p>Subtotal</p>
-          <p>Lkr {getTotalCartAmount()}</p>
+      <div className="cartitems-down">
+        <div className="cartitems-total">
+          <h1>cart Totals</h1>
+          <div>
+            <div className="cartitems-total-item">
+              <p>Subtotal</p>
+              <p>Lkr {getTotalCartAmount()}</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <p>Shiping Fee</p>
+              <p>Free</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <h3>Total</h3>
+              <h3>Lkr {getTotalCartAmount()}</h3>
+
+            </div>
+          </div>
+
+          <Link to='/checkout'><button>PROCEED TO CHECKOUT</button></Link>
+
         </div>
-<hr />
-     <div className="cartitems-total-item">
-          <p>Shiping Fee</p>
-          <p>Free</p>
-     </div>
-     <hr/>
-     <div className="cartitems-total-item">
-           <h3>Total</h3>
-          <h3>Lkr {getTotalCartAmount()}</h3>
+        <div className="cartitems-promocode">
+          <p>If you have a promo code, Enter it here</p>
+          <div className="cartitems-promobox">
 
-     </div>
-     </div>
-  
-<Link to='/checkout'><button>PROCEED TO CHECKOUT</button></Link>
+            <input type="text" placeholder='promo code' />
+            <button>Submit</button>
+          </div>
+        </div>
 
-</div>
-<div className="cartitems-promocode">
-   <p>If you have a promo code, Enter it here</p>
-    <div className="cartitems-promobox">
-
-    <input type="text" placeholder='promo code' />
-<button>Submit</button>
-</div>
- </div>
-
-    </div>
+      </div>
     </div>
   )
 
